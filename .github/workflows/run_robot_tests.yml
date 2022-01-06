@@ -17,7 +17,7 @@ jobs:
         - uses: actions/checkout@v2
         - name: Execute tests
           run: |
-            docker run --rm -v $(pwd)/tests/:/test --ipc=host --user pwuser marketsquare/robotframework-browser:latest bash -c "robot --outputdir /test/output /test"
+            docker run --rm -v $(pwd)/tests/:/test --ipc=host --user pwuser marketsquare/robotframework-browser:latest bash -c "robot /test"
         - name: Upload test results
           uses: actions/upload-artifact@v1
           if: always()
