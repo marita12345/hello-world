@@ -18,7 +18,9 @@ jobs:
         steps:
         - uses: actions/checkout@v2
         - name: Create folder for reports
-          run: mkdir reports
+          run: |
+          mkdir reports 
+          chmod a+w reports
         - name: Execute tests
           run: |
             docker run \
@@ -26,7 +28,10 @@ jobs:
              -v ${PWD}/reports:/reports \
              -v ${PWD}/tests/:/tests \
              --user pwuser:pwuser \
-             marketsquare/robotframework-browser:latest bash -c "robot --outputdir /reports /tests"
+             marketsquare/robotframework-browser:latest \
+             robot --version \
+             ls \
+             bash -c "robot --outputdir /reports /tests"
         - name: Upload test results
           uses: actions/upload-artifact@v1
           if: always()
