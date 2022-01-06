@@ -17,9 +17,15 @@ jobs:
         runs-on: ubuntu-latest
         steps:
         - uses: actions/checkout@v2
+        - name: Create folder for reports
+          run: mkdir reports
         - name: Execute tests
           run: |
-            docker run --rm -v $(pwd)/hello-world/tests/:/tests marketsquare/robotframework-browser:latest bash -c "robot --outputdir /tests/output /tests"
+            docker run \
+             --rm \
+             -v ${PWD}/reports:/tests/output \
+             -v $(pwd)/tests/:/tests \
+             marketsquare/robotframework-browser:latest bash -c "robot --outputdir /tests/output /tests"
         - name: Upload test results
           uses: actions/upload-artifact@v1
           if: always()
