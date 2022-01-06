@@ -25,7 +25,7 @@ jobs:
              --rm \
              -v ${PWD}/reports:/reports \
              -v ${PWD}/tests/:/tests \
-             --user pwuser \
+             --user pwuser:pwuser \
              marketsquare/robotframework-browser:latest bash -c "robot --outputdir /reports /tests"
         - name: Upload test results
           uses: actions/upload-artifact@v1
