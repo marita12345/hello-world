@@ -24,7 +24,7 @@ jobs:
             docker run \
              --rm \
              -v ${PWD}/reports:/reports \
-             -v $(PWD)/tests/:/tests \
+             -v ${PWD}/tests/:/tests \
              --user pwuser \
              marketsquare/robotframework-browser:latest bash -c "robot /tests"
         - name: Upload test results
