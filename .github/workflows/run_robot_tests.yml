@@ -30,7 +30,6 @@ jobs:
              --user pwuser:pwuser \
              marketsquare/robotframework-browser:latest \
              robot --version \
-             ls \
              bash -c "robot --outputdir /reports /tests"
         - name: Upload test results
           uses: actions/upload-artifact@v1
