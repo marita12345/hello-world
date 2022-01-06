@@ -19,8 +19,8 @@ jobs:
         - uses: actions/checkout@v2
         - name: Create folder for reports
           run: |
-          mkdir reports 
-          chmod a+w reports
+            mkdir reports 
+            chmod a+w reports
         - name: Execute tests
           run: |
             docker run \
