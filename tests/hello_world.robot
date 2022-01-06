@@ -7,4 +7,5 @@ Hello World!
 
 Open page
     New Page    https://www.foreca.fi/Finland/Lahti
+    Click    text=Hyväksy
     Take Screenshot
