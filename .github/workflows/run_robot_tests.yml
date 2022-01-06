@@ -16,7 +16,7 @@ jobs:
         steps:
         - uses: actions/checkout@v2
         - name: Execute tests
-            run: |
+          run: |
             docker run marketsquare/robotframework-browser:latest bash -c "robot --outputdir ${{ github.workspace }}/reports ${{ github.workspace }}/tests"
         - name: Upload test results
           uses: actions/upload-artifact@v1
