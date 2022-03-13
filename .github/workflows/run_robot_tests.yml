@@ -39,3 +39,5 @@ jobs:
           if: always()
           with:
             files: reports/xunit.xml
+            check_name: Robot Framework test results
+            comment_title: Robot Framework pass/fail metrics, please see full report from Artifacts
