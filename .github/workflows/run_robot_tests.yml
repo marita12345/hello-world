@@ -32,7 +32,7 @@ jobs:
           uses: actions/upload-artifact@v1
           if: always()
           with:
-            name: reports
+            name: Full Robot Framework reports
             path: ${{ github.workspace }}/reports 
         - name: Publish Test Results
           uses: EnricoMi/publish-unit-test-result-action@v1
