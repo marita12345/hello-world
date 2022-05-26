@@ -32,7 +32,7 @@ jobs:
           uses: actions/upload-artifact@v1
           if: always()
           with:
-            name: Full Robot Framework reports
+            name: reports
             path: ${{ github.workspace }}/reports 
 
     generate_report:
