@@ -4,7 +4,7 @@
 # This yml-file is inspired by https://github.com/MarketSquare/robotframework-browser/tree/main/docker and https://faun.pub/robot-framework-testing-using-github-actions-e0aa8df16fd8
 
 
-name: Robot Framework
+name: EnricoMi/publish-unit-test-result-action - reporter
 
 on:
   push:

@@ -1,0 +1,50 @@
+# Example how to execute Robot Framework Test or Tasks in GitLab CI/CD with browser library
+# ++++++++++++++++++++++
+# Run test job inside robotframework-browser environment and archive reports and results
+# This yml-file is inspired by https://github.com/MarketSquare/robotframework-browser/tree/main/docker and https://faun.pub/robot-framework-testing-using-github-actions-e0aa8df16fd8
+
+
+name: EnricoMi/publish-unit-test-result-action - reporter
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+    Run-robot-tests:
+        runs-on: ubuntu-latest
+        steps:
+        - uses: actions/checkout@v2
+        - name: Create folder for reports
+          run: |
+            mkdir reports 
+            chmod a+w reports
+        - name: Execute tests
+          run: |
+            docker run \
+             --rm \
+             -v ${PWD}/reports:/reports \
+             -v ${PWD}/tests/:/tests \
+             --user pwuser:pwuser \
+             marketsquare/robotframework-browser:latest \
+             bash -c "robot --xunit xunit.xml --outputdir /reports /tests"
+        - name: Upload test results
+          uses: actions/upload-artifact@v1
+          if: always()
+          with:
+            name: Full Robot Framework reports
+            path: ${{ github.workspace }}/reports 
+
+    generate_report:
+        if: always()
+        needs: [test] 
+        runs-on: ubuntu-latest
+        steps:
+        - name: Download reports
+          uses: actions/download-artifact@v1
+          with:
+            name: reports
+        - name: Send report to commit
+          uses: joonvena/robotframework-reporter-action@v2.1
+          with:
+            gh_access_token: ${{ secrets.GITHUB_TOKEN }}
