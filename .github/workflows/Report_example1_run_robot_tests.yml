@@ -4,14 +4,14 @@
 # This yml-file is inspired by https://github.com/MarketSquare/robotframework-browser/tree/main/docker and https://faun.pub/robot-framework-testing-using-github-actions-e0aa8df16fd8
 
 
-name: EnricoMi/publish-unit-test-result-action - reporter
+name: joonvena/robotframework-reporter-action - reporter
 
 on:
   push:
     branches: [ master ]
 
 jobs:
-    Run-robot-tests:
+    test:
         runs-on: ubuntu-latest
         steps:
         - uses: actions/checkout@v2

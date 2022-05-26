@@ -35,7 +35,7 @@ jobs:
             name: Full Robot Framework reports
             path: ${{ github.workspace }}/reports 
         - name: Publish Test Results
-          uses: EnricoMi/publish-unit-test-result-action@v1
+          uses: EnricoMi/publish-unit-test-result-action@v1.36
           if: always()
           with:
             files: reports/xunit.xml
